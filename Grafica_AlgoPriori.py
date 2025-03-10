@@ -13,16 +13,23 @@ def generar_AlgoritmoPrioridad():
         print("No hay procesos para mostrar.")
         return
     
-    # Ordenar procesos por prioridad (menor número = mayor prioridad)
-    procesos.sort(key=lambda x: x[3])  # Ordenar solo por prioridad
-
+    # Separar el proceso 1 y los demás
+    proceso_1 = next((p for p in procesos if p[0] == 1), None)
+    otros_procesos = [p for p in procesos if p[0] != 1]
+    
+    # Ordenar los demás procesos por prioridad (menor número = mayor prioridad)
+    otros_procesos.sort(key=lambda x: x[3])
+    
+    # Reconstruir la lista de procesos asegurando que "1" vaya primero
+    procesos_ordenados = [proceso_1] + otros_procesos if proceso_1 else otros_procesos
+    
     tareas = []
     tiempo_actual = 0  # Tiempo acumulado en la ejecución
 
-    for i, proceso in enumerate(procesos):
+    for i, proceso in enumerate(procesos_ordenados):
         pid, rafaga, tiempo_llegada, prioridad = proceso  # Extraer datos
         
-        # Si es el primer proceso, debe comenzar en 0
+        # Si es el primer proceso (Proceso 1), debe comenzar en 0
         if i == 0:
             inicio = 0
         else:
@@ -54,8 +61,8 @@ def generar_AlgoritmoPrioridad():
     button = Button(ax_button, 'Cálculo de Tiempos')
 
     def on_click(event):
-        mostrar_tabla_tiempos_espera(procesos)
-        mostrar_tabla_tiempos_sistema(procesos)
+        mostrar_tabla_tiempos_espera(procesos_ordenados)
+        mostrar_tabla_tiempos_sistema(procesos_ordenados)
     
     button.on_clicked(on_click)
     
