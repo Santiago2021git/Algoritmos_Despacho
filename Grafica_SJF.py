@@ -1,6 +1,6 @@
-import matplotlib.pyplot as plt  # Importar la librería para gráficos 
-import numpy as np  # Manejo de arrays numéricos
-from SJF import tabla_SJF  # Obtener los datos
+import matplotlib.pyplot as plt  
+import numpy as np 
+from SJF import tabla_SJF  
 from matplotlib.widgets import Button
 from Te_SJF import mostrar_tabla_tiempos_espera
 from Ts_SJF import mostrar_tabla_tiempos_sistema
@@ -47,16 +47,16 @@ def generar_SJF():
     for tarea, inicio, fin in tareas:
         ax.barh(tarea, fin - inicio, left=inicio, color="seagreen", edgecolor="black")
 
-    ax.set_xticks(np.arange(0, tiempo_actual + 1, 1))  # Ajustar el eje X
-    ax.set_xlim(0, tiempo_actual)  # Límite del eje X
+    ax.set_xticks(np.arange(0, tiempo_actual + 1, 1))  
+    ax.set_xlim(0, tiempo_actual)  
 
-    # Etiquetas y título del gráfico
+  
     plt.xlabel("Tiempo")
     plt.ylabel("Procesos")
     plt.title("SJF")
     plt.grid(axis="x", linestyle="--", alpha=0.7)
 
-    # Botón para mostrar tablas de tiempos
+   
     ax_button = plt.axes([0.4, 0.02, 0.2, 0.075])
     button = Button(ax_button, 'Cálculo de Tiempos')
 
