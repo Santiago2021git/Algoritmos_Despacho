@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from Fifo import tabla_fifo  # Importamos la función para obtener los datos
+from Fifo import tabla_fifo
 
 
 def mostrar_tabla_tiempos_espera(procesos):
@@ -32,7 +32,7 @@ def mostrar_tabla_tiempos_espera(procesos):
     datos_tabla = list(zip(nombres_procesos, tiempos_espera))
     datos_tabla.append(["Promedio", round(tiempo_promedio, 2)])
     
-    # Crear la tabla
+
     fig, ax = plt.subplots(figsize=(6, 3))
     ax.axis('tight')
     ax.axis('off')
