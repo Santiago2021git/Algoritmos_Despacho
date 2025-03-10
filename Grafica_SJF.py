@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt  # Importar la librería para gráficos
+import matplotlib.pyplot as plt  # Importar la librería para gráficos 
 import numpy as np  # Manejo de arrays numéricos
 from SJF import tabla_SJF  # Obtener los datos
 from matplotlib.widgets import Button
@@ -12,9 +12,16 @@ def generar_SJF():
     if not procesos:
         print("No hay procesos para mostrar.")
         return
-    
-    # Ordenar procesos por ráfaga de CPU (menor a mayor)
-    procesos.sort(key=lambda x: x[1])  # Ordenar solo por ráfaga de CPU
+
+    # Asegurar que el primer proceso sea el primero en la lista
+    primer_proceso = procesos[0]
+    procesos_restantes = procesos[1:]
+
+    # Ordenar el resto de los procesos por ráfaga de CPU (menor a mayor)
+    procesos_restantes.sort(key=lambda x: x[1])  
+
+    # Unir el primer proceso con los ordenados
+    procesos = [primer_proceso] + procesos_restantes  
 
     tareas = []
     tiempo_actual = 0  # Tiempo acumulado en la ejecución
