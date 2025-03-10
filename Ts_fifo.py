@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from Fifo import tabla_fifo  # Importamos la función para obtener los datos
+from Fifo import tabla_fifo 
 
 def mostrar_tabla_tiempos_sistema(procesos):
     if not procesos:
