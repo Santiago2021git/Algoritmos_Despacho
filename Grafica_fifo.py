@@ -1,6 +1,6 @@
-import matplotlib.pyplot as plt  # Importar la librería para gráficos
-import numpy as np  # Manejo de arrays numéricos
-from Fifo import tabla_fifo  # Importar la función que obtiene los datos
+import matplotlib.pyplot as plt
+import numpy as np  
+from Fifo import tabla_fifo  
 from matplotlib.widgets import Button 
 from Te_fifo import mostrar_tabla_tiempos_espera
 from Ts_fifo import mostrar_tabla_tiempos_sistema
@@ -34,23 +34,23 @@ def generar_fifo():
         # Actualizar el tiempo total acumulado
         total_tiempo = fin
 
-    # Crear el diagrama de Gantt
+   
     fig, ax = plt.subplots(figsize=(10, 5))
 
     for tarea, inicio, fin in tareas:
         ax.barh(tarea, fin - inicio, left=inicio, color="mediumpurple", edgecolor="black")
 
-    # Configurar el eje X con números enteros en lugar de fechas
-    ax.set_xticks(np.arange(0, total_tiempo + 1, 1))  # Ajustar el eje X
-    ax.set_xlim(0, total_tiempo)  # Ajustar el límite del eje X
+   
+    ax.set_xticks(np.arange(0, total_tiempo + 1, 1))
+    ax.set_xlim(0, total_tiempo)  
 
-    # Etiquetas y título del gráfico
-    plt.xlabel("Tiempo")  # Etiqueta del eje X
-    plt.ylabel("Procesos")  # Etiqueta del eje Y
-    plt.title("Planificación FIFO")  # Título del gráfico
-    plt.grid(axis="x", linestyle="--", alpha=0.7)  # Cuadrícula en el eje X
+    
+    plt.xlabel("Tiempo") 
+    plt.ylabel("Procesos")  
+    plt.title("Planificación FIFO")  
+    plt.grid(axis="x", linestyle="--", alpha=0.7) 
 
-    ax_button = plt.axes([0.4, 0.02, 0.2, 0.075])  # Posición del botón en la figura
+    ax_button = plt.axes([0.4, 0.02, 0.2, 0.075]) 
     button = Button(ax_button, 'Cálculo de Tiempos')
 
     def on_click(event):
