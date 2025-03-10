@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from SJF import tabla_SJF  # Importamos la función para obtener los datos
+from SJF import tabla_SJF  
 
 def mostrar_tabla_tiempos_sistema(procesos):
     if not procesos:
